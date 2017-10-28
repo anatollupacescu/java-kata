@@ -14,9 +14,10 @@ public class SerializeDemo {
     public void main() {
         final Employee employee = new Employee("Reyan Ali", "Phokka Kuan, Ambehta Peer", 11122333, 101);
         final SerializationHelper<Employee> serializationHelper = new SerializationHelper<>();
-        ByteArrayOutputStream serialized = Optional.of(employee).map(serializationHelper.toByteArrayOutputStream).get();
-        Employee deserializedEmployee = Optional.of(serialized).map(serializationHelper.deserialize).get();
-        assertThat(deserializedEmployee.mailCheck(), is(equalTo("Mailing a check to Reyan Ali Phokka Kuan, Ambehta Peer")));
+        Optional.of(employee)
+                .map(serializationHelper.toByteArrayOutputStream)
+                .flatMap(serialized -> Optional.of(serialized).map(serializationHelper.deserialize))
+                .ifPresent(deserializedEmployee -> assertThat(deserializedEmployee.mailCheck(), is(equalTo("Mailing a check to Reyan Ali Phokka Kuan, Ambehta Peer"))));
     }
 
     static final class SerializationHelper<T> {

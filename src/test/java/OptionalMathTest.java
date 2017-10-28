@@ -1,7 +1,6 @@
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
@@ -12,6 +11,7 @@ public class OptionalMathTest {
         Arrays.asList("unu", "doi", "trei")
                 .parallelStream()
                 .flatMap(this::flatStream)
+//                .map(s -> s.toUpperCase())
                 .forEach(this::print);
     }
 
@@ -25,15 +25,7 @@ public class OptionalMathTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String name = Thread.currentThread().getName();
-        return Stream.of(name + " " + integer, name + " " + integer, name + " " + integer);
+        return Stream.of("lol " + integer);
     }
 
-    Optional<Double> sqrt(Double d) {
-        return d >= 0 ? Optional.of(Math.sqrt(d)) : Optional.empty();
-    }
-
-    Double inc(Double d) {
-        return d + 1;
-    }
 }

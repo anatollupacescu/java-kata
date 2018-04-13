@@ -39,7 +39,6 @@ public class NaivePoolTest {
         assertEquals(3, solution(6, 2));
         assertEquals(4, solution(4, 5));
         assertEquals(4, solution(12, 21));
-        assertEquals(27, solution(27, 16));
     }
 
     private int[] shifted(int[] A, int K) {
@@ -94,33 +93,6 @@ public class NaivePoolTest {
         assertEquals(5, maxStreak(1041));
     }
 
-    public int equi ( int A[], int n ) {
-        int k, m, lsum, rsum;
-        for(k = 0; k < n; ++k) {
-            lsum = 0; rsum = 0;
-            for(m = 0; m < k; ++m) lsum += A[m];
-            for(m = k + 1; m < n; ++m) rsum += A[m];
-            if (lsum == rsum) return k;
-        }
-        return -1;
-    }
-
-    public int solution(int[] input) {
-        int sum = 0;
-        for(int i = 0; i < input.length; i++) {
-            sum += input[i];
-        }
-        int left = 0;
-        int right = sum;
-        for(int i = 0; i < input.length - 2; i++) {
-            left += input[i];
-            right -= left;
-            right -= input[i + 1];
-            if(right == left) return i + 1;
-        }
-        return -1;
-    }
-
     public int solution1(int[] src) {
         long[] input = new long[src.length];
         for(int i = 0; i < src.length; i++) {
@@ -145,13 +117,5 @@ public class NaivePoolTest {
     public void test() {
         int[] input = new int[] {1082132608, 0, 1082132608};
         assertEquals(1, solution1(input));
-    }
-
-    @Test
-    public void t1() {
-        long left = 1_082_132_608L;
-        assertEquals(1082132608, left);
-        long right = -2_130_702_080L;
-        assertEquals(left * -1, right - left);
     }
 }

@@ -32,6 +32,6 @@ public class MorganStanley {
     public void test1() {
         int[] arr = new int[] {3, 3 };
         int solution = solution(arr);
-        assertEquals(4, solution);
+        assertEquals(1, solution);
     }
 }

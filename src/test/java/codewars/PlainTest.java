@@ -95,9 +95,4 @@ public class PlainTest {
         long maxPlusOne = (long)L + 1;
         Assert.assertEquals(2_147_483_648L, maxPlusOne);
     }
-
-    @Test
-    public void letsPractice() {
-        Assert.assertEquals("lol", "test");
-    }
 }
